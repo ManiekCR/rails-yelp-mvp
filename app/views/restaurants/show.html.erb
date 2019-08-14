@@ -1,0 +1,21 @@
+<nav class="navbar navbar-light bg-light">
+    <%= link_to "Restaurants list", restaurants_path, class: "navbar-brand" %>
+    <%= link_to "Add a review", new_restaurant_review_path(@restaurant), class: "btn btn-outline-success my-2 my-sm-0" %>
+</nav>
+<div class="p-4">
+  <h2><%= @restaurant.name %></h2>
+  <h5 class="pb-3"><em><%= @restaurant.category %></em></h5>
+  <p><%= @restaurant.address %></p>
+  <p><i class="fas fa-phone"></i> <%= @restaurant.phone_number %></p>
+  <h4 class="pt-2 pb-1 pl-2 border-bottom">Reviews  <%= link_to new_restaurant_review_path(@restaurant), method: 'get' do %>
+    <i class="fas fa-plus" style="font-size: 15px"></i>
+  <% end %></h4>
+
+  <ul>
+    <% @restaurant.reviews.each do |review| %>
+      <li><%= review.content %> - Rating: <%= review.rating %>/5</li>
+    <% end %>
+  </ul>
+  <%= link_to "Back to the list", restaurants_path %>
+</div>
+

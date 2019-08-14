@@ -1,0 +1,14 @@
+<nav class="navbar navbar-light bg-light">
+    <%= link_to "Restaurants list", restaurants_path, class: "navbar-brand" %>
+    <%= link_to "Add a restaurant", restaurants_new_path, class: "btn btn-outline-success my-2 my-sm-0" %>
+</nav>
+<div class="container mt-3">
+  <ul>
+    <% @restaurants.each do |restaurant| %>
+      <li style="list-style: none" class="py-2">
+  <%= link_to restaurant.name, restaurant_path(restaurant) %> - <em><%= restaurant.category %></em>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
